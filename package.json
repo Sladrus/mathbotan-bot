@@ -1,0 +1,17 @@
+{
+  "name": "matchbotan-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sladrus",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.2",
+    "node-telegram-bot-api": "^0.64.0",
+    "nodemon": "^3.0.3",
+    "telegram-command-handler": "^1.4.0"
+  }
+}
