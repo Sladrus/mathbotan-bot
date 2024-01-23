@@ -1,8 +1,8 @@
 const UserService = require('../../../server/service/UserService');
 
-module.exports = async function startCommand(msg, args) {
+module.exports = async function chatJoinRequestEvent(msg) {
   try {
-    await UserService.createFollower(msg);
+    await UserService.joinGroup(msg);
   } catch (e) {
     console.log(e);
   }

@@ -7,12 +7,13 @@ const initCommand = async (bot, name) => {
   const callback = require(commandPath);
 
   commandName.on('receive', async (msg, args) => {
-    await callback(bot, msg, args);
+    await callback(msg, args);
   });
 };
 
 const initCommands = async (bot) => {
   await initCommand(bot, 'start');
+  await initCommand(bot, 'chatid');
 };
 
 module.exports = { initCommands };
