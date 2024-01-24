@@ -13,7 +13,7 @@ class UserService {
     await MathbotanApi.createFollower(userDto.toPlainObject());
     await BotService.sendMessage(
       chat_id,
-      `Ваша ссылка на оплату:${PAY_URL}?tg=${from_id}\n\nПосле оплаты бот выдаст приглашение на вступление в чат.`
+      `Ваша ссылка на оплату: ${PAY_URL}?tg=${from_id}\n\nПосле оплаты бот выдаст приглашение на вступление в чат.`
     );
   }
 
