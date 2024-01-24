@@ -11,11 +11,17 @@ class UserService {
 
     const userDto = UserDto.fromUserEntity(msg.from);
     await MathbotanApi.createFollower(userDto.toPlainObject());
-    await BotService.sendMessage(chat_id, `${PAY_URL}?tg=${from_id}`);
+    await BotService.sendMessage(
+      chat_id,
+      `Ваша ссылка на оплату:${PAY_URL}?tg=${from_id}\n\nПосле оплаты бот выдаст приглашение на вступление в чат.`
+    );
   }
 
   async sendLink(user_id, link) {
-    await BotService.sendMessage(user_id, `Ссылка на вступление: ${link}`);
+    await BotService.sendMessage(
+      user_id,
+      `Thanks!\n\nЗаходите по ссылке: ${link}`
+    );
   }
 
   async joinGroup(msg) {
