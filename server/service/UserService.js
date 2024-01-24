@@ -12,7 +12,8 @@ class UserService {
     const userDto = UserDto.fromUserEntity(msg.from);
     await MathbotanApi.createFollower(userDto.toPlainObject());
     const data = await MathbotanApi.getSubscription(from_id);
-    if (data?.status === 'ACTIVE') return;
+    if (data?.status === 'ACTIVE')
+      return await BotService.sendMessage(chat_id, `Подписка активна.`);
     await BotService.sendMessage(
       chat_id,
       `Ваша ссылка на оплату: ${PAY_URL}?tg=${from_id}\n\nПосле оплаты бот выдаст приглашение на вступление в чат.`
