@@ -1,6 +1,7 @@
 const UserDto = require('../../dto/UserDto');
 const BotService = require('./BotService');
 const MathbotanApi = require('../../http/api-matchbotan');
+const { sleep } = require('../../utils/utils');
 
 const PAY_URL = process.env.PAY_URL;
 
@@ -37,6 +38,17 @@ class UserService {
       return await BotService.approveChatJoinRequest(chat_id, from_id);
     if (data?.status === 'NOT_ACTIVE')
       return await BotService.declineChatJoinRequest(chat_id, from_id);
+  }
+
+  async sendMessages({ users, text }) {
+    for (const user of users) {
+      try {
+        await BotService.sendMessage(user, text, { parse_mode: 'HTML' });
+        await sleep(1500);
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
 }
 

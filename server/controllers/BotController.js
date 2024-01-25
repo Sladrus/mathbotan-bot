@@ -15,6 +15,17 @@ class BotController {
       next(e);
     }
   }
+
+  async sendMessages(req, res, next) {
+    try {
+      const body = req.body;
+
+      await UserService.sendMessages(body);
+      return res.json();
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = new BotController();
