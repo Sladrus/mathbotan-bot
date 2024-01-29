@@ -50,6 +50,26 @@ class UserService {
       }
     }
   }
+
+  async sendComment(msg) {
+    const channel_id = process.env.CHAT_ID;
+    if (!msg?.is_automatic_forward && !msg?.sender_chat.id !== channel_id)
+      return;
+
+    const message_id = msg.message_id;
+    const chat_id = msg.chat.id;
+
+    try {
+      await BotService.replyToMessage(
+        message_id,
+        'Купите подписку, чтобы получить доступ к комментариям: @MatchBotanBot\n\nПочему так? https://t.me/mathbotan/552',
+        chat_id
+      );
+      console.log(msg);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 module.exports = new UserService();

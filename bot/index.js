@@ -33,6 +33,7 @@ class MathbotanBot {
   async declineChatJoinRequest(chat_id, user_id) {
     return await this.bot.declineChatJoinRequest(chat_id, user_id);
   }
+
 }
 
 module.exports = new MathbotanBot();

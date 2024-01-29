@@ -22,6 +22,14 @@ class BotService {
     const message = await mathbotanBot.declineChatJoinRequest(chat_id, user_id);
     return message;
   }
+
+  async replyToMessage(message_id, text, chat_id) {
+    const message = await mathbotanBot.sendMessage(chat_id, text, {
+      reply_to_message_id: message_id,
+      disable_web_page_preview: true,
+    });
+    return message;
+  }
 }
 
 module.exports = new BotService();

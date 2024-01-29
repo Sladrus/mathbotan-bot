@@ -9,6 +9,8 @@ const initEvent = (bot, name) => {
 
 const initEvents = (bot) => {
   initEvent(bot, 'chat_join_request');
+  initEvent(bot, 'channel_post');
+  initEvent(bot, 'message');
 };
 
 module.exports = { initEvents };
