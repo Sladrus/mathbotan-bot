@@ -55,7 +55,7 @@ class UserService {
 
   async sendComment(msg) {
     const channel_id = process.env.CHAT_ID;
-    if (!msg?.is_automatic_forward && !msg?.sender_chat.id !== channel_id)
+    if (!msg?.is_automatic_forward && !msg?.sender_chat?.id !== channel_id)
       return;
     if (msg?.media_group_id) {
       if (this.mediaGroupsList.includes(msg?.media_group_id)) return;
