@@ -6,6 +6,8 @@ const { sleep } = require('../../utils/utils');
 const PAY_URL = process.env.PAY_URL;
 
 class UserService {
+  mediaGroupsList = [];
+
   async createFollower(msg) {
     const chat_id = msg.chat.id;
     const from_id = msg.from.id;
@@ -55,7 +57,10 @@ class UserService {
     const channel_id = process.env.CHAT_ID;
     if (!msg?.is_automatic_forward && !msg?.sender_chat.id !== channel_id)
       return;
-
+    if (msg?.media_group_id) {
+      if (this.mediaGroupsList.includes(msg?.media_group_id)) return;
+      this.mediaGroupsList.push(msg?.media_group_id);
+    }
     const message_id = msg.message_id;
     const chat_id = msg.chat.id;
 
@@ -65,7 +70,6 @@ class UserService {
         'Купите подписку, чтобы получить доступ к комментариям: @MathBotanBot\n\nПочему так? https://t.me/mathbotan/552',
         chat_id
       );
-      console.log(msg);
     } catch (e) {
       console.log(e);
     }
